@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">button</string>
+    <string name="hello"> Merhaba Dünya!</string>
+    <string name="button"> Buton çalışıyor!</string>
+    <string name="welcome"> Hoşgeldiniz!</string>
+</resources>
