@@ -1,15 +1,10 @@
-package com.example.selam;
+package com.example.welcome;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.view.View.OnClickListener;
 import android.widget.TextView;
-import android.content.Intent;
 
 public class MyActivity extends Activity {
     /**
@@ -18,7 +13,7 @@ public class MyActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
+        setContentView(R.layout.splash);
 
 
 
@@ -33,33 +28,24 @@ public class MyActivity extends Activity {
                     synchronized (this) {
                         // Uygulama 3 saniye aynı ekranda bekliyor
                         wait(3000);
+                        finish();
 
                     }
-                } catch (InterruptedException e) {
-
-                    // Hata yönetimi
-
-                } finally {
-                    startActivity(new Intent(getApplicationContext(),SplashActivity.class));
-
-
-
-
-                    // Yeni açılmak istenen Intent
-
+                }catch (Exception e) {
 
                 }
-
+                finally {
+                    Intent i = new Intent(getBaseContext(), SplashActivity.class);
+                    startActivity(i);
+                }
             }
-
         };
+
+
         thread.start();
 
-        // Thread başlatılıyor
 
-
-
-
+    }
 
 
     }
@@ -68,6 +54,3 @@ public class MyActivity extends Activity {
 
 
 
-
-
-}
