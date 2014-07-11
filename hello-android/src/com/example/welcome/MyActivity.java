@@ -5,50 +5,57 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.ListView;
+import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.content.ContentResolver;
+import android.provider.Settings;
 
 public class MyActivity extends Activity {
+    private String[] dizi = {"splash", "button"};
+
     /**
      * Called when the activity is first created.
      */
-    @Override
+   
+
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.splash);
+        setContentView(R.layout.list);
 
+        ListView listemiz = (ListView) findViewById(R.id.listView1);
 
+        ArrayAdapter<String> veriAdaptoru = new ArrayAdapter<String>
+                (this, android.R.layout.simple_list_item_1, android.R.id.text1, dizi);
+        listemiz.setAdapter(veriAdaptoru);
 
-
-        Thread thread = new Thread() {
-
+        listemiz.setOnItemClickListener(new OnItemClickListener() {
             @Override
-            public void run() {
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                switch (position) {
+                    case 0:
+                        Intent i = new Intent(getBaseContext(), SplashActivity.class);
+                        startActivity(i);
+                        break;
+                    case 1:
+                        Intent m = new Intent(getBaseContext(), main.class);
+                        startActivity(m);
 
 
-                try {
-                    synchronized (this) {
-                        // Uygulama 3 saniye aynı ekranda bekliyor
-                        wait(3000);
-                        finish();
-
-                    }
-                }catch (Exception e) {
-
-                }
-                finally {
-                    Intent i = new Intent(getBaseContext(), SplashActivity.class);
-                    startActivity(i);
                 }
             }
-        };
-
-
-        thread.start();
+        });
 
 
     }
 
+}
 
-    }
+
+
+
 
 
 

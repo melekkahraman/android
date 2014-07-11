@@ -12,15 +12,44 @@ public class SplashActivity extends Activity {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.splash);
+
+
+
+
+
+        Thread thread = new Thread() {
+
+            @Override
+            public void run() {
+
+
+                try {
+                    synchronized (this) {
+                        // Uygulama 3 saniye aynı ekranda bekliyor
+                        wait(3000);
+                        finish();
+
+                    }
+                }catch (Exception e) {
+
+                }
+                finally {
+                    Intent i = new Intent(getBaseContext(),main.class);
+                    startActivity(i);
+                }
+            }
+        };
+
+
+        thread.start();
+
+
     }
 
 
-        public void goster(View view) {
-            final TextView yaz = (TextView) findViewById(R.id.merhaba);
-            yaz.setText(getString(R.string.button));
 
     }
 
-}
+
 
