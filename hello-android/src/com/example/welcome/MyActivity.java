@@ -1,6 +1,7 @@
 package com.example.welcome;
 
 import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,47 +12,45 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.content.ContentResolver;
 import android.provider.Settings;
+import android.widget.Toast;
 
-public class MyActivity extends Activity {
+
+import java.util.List;
+
+public class MyActivity extends ListActivity {
     private String[] dizi = {"splash", "button"};
 
     /**
      * Called when the activity is first created.
      */
-   
 
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.list);
-
-        ListView listemiz = (ListView) findViewById(R.id.listView1);
-
-        ArrayAdapter<String> veriAdaptoru = new ArrayAdapter<String>
-                (this, android.R.layout.simple_list_item_1, android.R.id.text1, dizi);
-        listemiz.setAdapter(veriAdaptoru);
-
-        listemiz.setOnItemClickListener(new OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                switch (position) {
-                    case 0:
-                        Intent i = new Intent(getBaseContext(), SplashActivity.class);
-                        startActivity(i);
-                        break;
-                    case 1:
-                        Intent m = new Intent(getBaseContext(), main.class);
-                        startActivity(m);
-
-
-                }
-            }
-        });
-
-
+        setListAdapter(new ArrayAdapter<String>(MyActivity.this, android.R.layout.simple_list_item_1, dizi));
     }
 
+
+    @Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        // TODO Auto-generated method stub
+        super.onListItemClick(l, v, position, id);
+        switch (position) {
+            case 0:
+                Intent i = new Intent(getBaseContext(), SplashActivity.class);
+                startActivity(i);
+                break;
+            case 1:
+                Intent m = new Intent(getBaseContext(), main.class);
+                startActivity(m);
+
+
+        }
+    }
 }
+
+
+
 
 
 
