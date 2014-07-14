@@ -18,7 +18,7 @@ import android.widget.Toast;
 import java.util.List;
 
 public class MyActivity extends ListActivity {
-    private String[] dizi = {"splash", "button"};
+    private String[] dizi = {"splash", "button","müzik"};
 
     /**
      * Called when the activity is first created.
@@ -43,6 +43,11 @@ public class MyActivity extends ListActivity {
             case 1:
                 Intent m = new Intent(getBaseContext(), main.class);
                 startActivity(m);
+
+            case 2:
+                Intent n = new Intent(getBaseContext(), music.class);
+                startActivity(n);
+
 
 
         }
