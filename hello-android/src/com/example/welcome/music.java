@@ -34,7 +34,12 @@ public class music extends Activity {
 
     public void baslat(View view) {
         mPlayer = MediaPlayer.create(music.this, R.raw.yazaskim);
-        mPlayer.start();
+        if (mPlayer.isPlaying()) {
+            //stop or pause your media player mediaPlayer.stop(); or mediaPlayer.pause();
+
+        } else {
+            mPlayer.start();
+        }
 
 
     }
@@ -42,7 +47,13 @@ public class music extends Activity {
 
     public void durdur(View view) {
 
-        mPlayer.stop();
+
+        if (mPlayer.isPlaying()) {
+            mPlayer.stop();
+
+        } else {
+
+        }
 
 
     }
@@ -60,7 +71,6 @@ public class music extends Activity {
     }
 
 
-    }
-
+}
 
 

@@ -8,11 +8,6 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.ListView;
 import android.widget.ArrayAdapter;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.content.ContentResolver;
-import android.provider.Settings;
-import android.widget.Toast;
 
 
 import java.util.List;
@@ -43,10 +38,12 @@ public class MyActivity extends ListActivity {
             case 1:
                 Intent m = new Intent(getBaseContext(), main.class);
                 startActivity(m);
+                break;
 
             case 2:
                 Intent n = new Intent(getBaseContext(), music.class);
                 startActivity(n);
+                break;
 
 
 
